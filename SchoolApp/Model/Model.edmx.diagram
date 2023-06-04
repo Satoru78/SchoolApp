@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="880dc98c89f14554b556cd2b7595be45" Name="Diagram1">
+        <EntityTypeShape EntityType="schlTestModel.Client" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="schlTestModel.ClientService" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="schlTestModel.DocumentByService" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="schlTestModel.Gender" Width="1.5" PointX="1.5" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="schlTestModel.Manufacturer" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="schlTestModel.Product" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="schlTestModel.ProductPhoto" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="schlTestModel.ProductSale" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="schlTestModel.Service" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="schlTestModel.ServicePhoto" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="schlTestModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="schlTestModel.Tag" Width="1.5" PointX="3" PointY="16.25" IsExpanded="true" />
+        <AssociationConnector Association="schlTestModel.FK_Client_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="schlTestModel.FK_ClientService_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="schlTestModel.FK_ClientService_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="schlTestModel.FK_DocumentByService_ClientService" ManuallyRouted="false" />
+        <AssociationConnector Association="schlTestModel.FK_ProductSale_ClientService" ManuallyRouted="false" />
+        <AssociationConnector Association="schlTestModel.FK_Product_Manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="schlTestModel.FK_ProductPhoto_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="schlTestModel.FK_ProductSale_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="schlTestModel.FK_ServicePhoto_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="schlTestModel.AttachedProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="schlTestModel.TagOfClient" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,94 @@
+﻿<Page x:Class="SchoolApp.Views.Pages.ServiceList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SchoolApp.Views.Pages"
+      mc:Ignorable="d" 
+      Loaded="Page_Loaded"
+      d:DesignHeight="500" d:DesignWidth="1000"
+      Title="ServiceList">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <WrapPanel Orientation="Horizontal">
+            <ComboBox Width="100" Margin="0,0,10,0" Name="cmdSort" SelectionChanged="cmdSort_SelectionChanged"></ComboBox>
+            <ComboBox Width="100" Name="cmdFilter" SelectionChanged="cmdFilter_SelectionChanged"></ComboBox>
+            <TextBox Name="txbSearch" Width="200" Margin="10,0,0,0" TextChanged="txbSearch_TextChanged"></TextBox>
+            <Button Name="btnADDEdit" Click="btnADDEdit_Click" Content="Добавить/редактировать" Width="200"></Button>
+            <Button Name="btnReport" Click="btnReport_Click" Content="Создать отчет" Width="200"></Button>
+
+        </WrapPanel>
+        
+        <ListView  Grid.Row="1" Name="ServiceDataList" HorizontalContentAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border>
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Background" Value="LightGreen"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Discount}" Value="{x:Null}">
+                                        <Setter Property="Background" Value="{StaticResource SecondBackground}"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        
+                        <Image Grid.RowSpan="4" Margin="5" Height="80" Width="80" Source="{Binding GetPhoto}" ></Image>
+                        <TextBlock Margin="0,0,0,20" Grid.Column="1" Text="{Binding Title}"></TextBlock>
+                        <StackPanel Margin="0,0,0,0" Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+                            <TextBlock Text="{Binding Cost, StringFormat={}{0:0#}}">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextDecorations" Value="Strikethrough"></Setter>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Discount}" Value="{x:Null}">
+                                                <Setter Property="Visibility" Value="Collapsed"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        <TextBlock>
+                            
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{} {0} рублей за {1} минут">
+                                        <Binding Path="CostWithDiscount" StringFormat="{}{0:0#}}"></Binding>
+                                        <Binding Path="DurationInMunites"></Binding>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        </StackPanel>
+                        <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Discount, StringFormat={}* скидка {0}%, TargetNullValue={}}"></TextBlock>
+                        <StackPanel Margin="0,10,0,0" Orientation="Horizontal" Grid.Column="1" Grid.Row="4">
+                                <Button IsEnabled="True" Name="btnEdit" Background="Transparent" Click="btnEdit_Click"  Margin="5" Content="Редактировать"></Button>
+                                <Button Name="btnDel" IsEnabled="True" Background="Transparent" Click="btnDel_Click"  Margin="5" Content="Удалить"></Button>
+
+                        </StackPanel>
+                    </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <TextBlock Grid.Row="2" Margin="0,0,1,0" Name="tlbCount"/>
+    </Grid>
+</Page>
